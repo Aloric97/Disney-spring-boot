@@ -1,6 +1,7 @@
 package com.API.Disney.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -12,9 +13,11 @@ public class Genero {
     private Long id_genero;
 
     @Column(name = "nombre")
+    @NotNull
     private String nombre;
 
     @Column(name = "imagen")
+    @NotNull
     private String imagen;
 
     @OneToMany(mappedBy = "genero", cascade = CascadeType.ALL)

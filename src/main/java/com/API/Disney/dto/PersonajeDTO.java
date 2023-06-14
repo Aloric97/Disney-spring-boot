@@ -4,7 +4,7 @@ package com.API.Disney.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class personajeDTO {
+public class PersonajeDTO {
 
 
 
@@ -16,18 +16,16 @@ public class personajeDTO {
     private String nombre;
 
     @NotNull(message = "the age can't be null")
-    @NotBlank(message = "the age can't be blank")
     private int edad;
 
     @NotNull(message = "the heigh can't be null")
-    @NotBlank(message = "the heigh can't be blank")
     private Double peso;
 
 
     private String historia;
 
 
-    public personajeDTO(String imagen, String nombre, int edad, Double peso, String historia) {
+    public PersonajeDTO(String imagen, String nombre, int edad, Double peso, String historia) {
         this.imagen = imagen;
         this.nombre = nombre;
         this.edad = edad;

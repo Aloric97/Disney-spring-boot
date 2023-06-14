@@ -1,8 +1,11 @@
 package com.API.Disney.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.validator.constraints.Range;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,15 +21,19 @@ public class Pelicula {
     private String imagen;
 
     @Column(name = "titulo")
+    @NotNull(message = "The tile can't be null")
     private String titulo;
 
     @Column(name = "fecha_creacion")
     private LocalDate fechaCreacion;
 
     @Column(name = "calificacion")
-    @Range(min = 1, max = 5)
+    @Min(value = 1,message = "the rating can't be less than 1")
+    @Max(value = 5,message = "The rating can't be higher than 5")
     private int calificacion;
 
+
+    @JsonIgnore
     @ManyToMany(mappedBy = "peliculas")
     private List<Personaje> personajes;
 

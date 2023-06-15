@@ -1,7 +1,7 @@
 package com.API.Disney.exception;
 
 
-import com.API.Disney.dto.errorDTO;
+import com.API.Disney.dto.ErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -17,8 +17,8 @@ public class ControllerAdvice {
 
 
     @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<errorDTO> runtimeExceptionHandler(RuntimeException e){
-        errorDTO error = new errorDTO("p-401",e.getMessage());
+    public ResponseEntity<ErrorDTO> runtimeExceptionHandler(RuntimeException e){
+        ErrorDTO error = new ErrorDTO(e.getMessage());
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
@@ -26,8 +26,8 @@ public class ControllerAdvice {
 
 
     @ExceptionHandler(value = RequestException.class)
-    public ResponseEntity<errorDTO> requestExceptionHandler(RequestException ex){
-        errorDTO error = new errorDTO(ex.getCode(), ex.getMessage());
+    public ResponseEntity<ErrorDTO> requestExceptionHandler(RequestException ex){
+        ErrorDTO error = new ErrorDTO(ex.getMessage());
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
 
